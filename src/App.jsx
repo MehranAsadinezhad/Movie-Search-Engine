@@ -1,5 +1,7 @@
 import './App.css'
 import SearchBar from './features/SearchBar'
+import SearchedMovieBox from './features/SearchedMovieBox';
+import WatchedMovieBox from './features/WatchedMovieBox';
 import MovieBox from './ui/MovieBox'
 
 const tempMovieData = [
@@ -54,7 +56,11 @@ function App() {
   return (
     <>
       <SearchBar />
-      <MovieBox />
+      <div className='flex items-center justify-center space-x-8'>
+        <SearchedMovieBox movies={tempMovieData} />
+        <WatchedMovieBox></WatchedMovieBox>
+      </div>
+
     </>
   )
 }

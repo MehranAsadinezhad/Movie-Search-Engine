@@ -6,7 +6,8 @@ export default {
     extend: {
       colors: {
         darkPurple: '#222228',
-        midPurple:"#282933"
+        midPurple:"#282933",
+        lightPurple:"#282941"
       },
     },
   },
