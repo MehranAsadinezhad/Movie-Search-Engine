@@ -1,8 +1,7 @@
 import './App.css'
 import SearchBar from './features/SearchBar'
-import SearchedMovieBox from './features/SearchedMoviesBox';
-import WatchedMovieBox from './features/WatchedMoviesBox';
-import MovieBox from './ui/MovieBox'
+import SearchedMoviesBox from './features/SearchedMoviesBox';
+import WatchedMoviesBox from './features/WatchedMoviesBox';
 
 const tempMovieData = [
   {
@@ -28,7 +27,7 @@ const tempMovieData = [
   },
 ];
 
-const tempWatchedData = [
+const tempWatchedData = 
   {
     imdbID: "tt1375666",
     Title: "Inception",
@@ -38,18 +37,7 @@ const tempWatchedData = [
     runtime: 148,
     imdbRating: 8.8,
     userRating: 10,
-  },
-  {
-    imdbID: "tt0088763",
-    Title: "Back to the Future",
-    Year: "1985",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    runtime: 116,
-    imdbRating: 8.5,
-    userRating: 9,
-  },
-];
+  };
 
 function App() {
 
@@ -57,8 +45,8 @@ function App() {
     <>
       <SearchBar />
       <div className='flex items-center justify-center space-x-8'>
-        <SearchedMovieBox movies={tempMovieData} />
-        <WatchedMovieBox></WatchedMovieBox>
+        <SearchedMoviesBox movies={tempMovieData} />
+        <WatchedMoviesBox watchedMovies={tempWatchedData}></WatchedMoviesBox>
       </div>
 
     </>
