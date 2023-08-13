@@ -1,7 +1,7 @@
 import './App.css'
 import SearchBar from './features/SearchBar'
-import SearchedMovieBox from './features/SearchedMovieBox';
-import WatchedMovieBox from './features/WatchedMovieBox';
+import SearchedMovieBox from './features/SearchedMoviesBox';
+import WatchedMovieBox from './features/WatchedMoviesBox';
 import MovieBox from './ui/MovieBox'
 
 const tempMovieData = [
