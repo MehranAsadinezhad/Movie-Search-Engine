@@ -5,11 +5,12 @@ export default function SelectedMovie({ selectedMovies }) {
   const [rating, setRating] = useState(0) // Initial value
 
   return (
-    <>
-      <div className='flex bg-lightPurple space-x-4 items-center'>
+    <ul>
+      <li className='flex bg-darkPurple px-10 w-full space-x-4
+      divide-stone-600 items-center'>
         <div>
           <img src={selectedMovies.Poster} alt={selectedMovies.imdbID}
-            className='w-36 h-48'></img>
+            className='w-10 h-16'></img>
         </div>
         <div className='space-y-4 flex flex-col justify-between'>
           <h1 className='text-white 
@@ -19,7 +20,7 @@ export default function SelectedMovie({ selectedMovies }) {
           <h3 className='text-stone-300'>{selectedMovies.Genre}</h3>
           <h3 className='text-stone-300'>⭐{selectedMovies.imdbRating} IMDB rating</h3>
         </div>
-      </div>
+      </li>
       <div className='wrap flex flex-col justify-center 
       items-center bg-lightPurple rounded-lg m-7 p-3 space-y-4'>
         <div className='flex items-center space-x-3'>
@@ -37,6 +38,6 @@ export default function SelectedMovie({ selectedMovies }) {
         <h3>Starring x</h3>
         <h3>Directed by x</h3>
       </div>
-    </>
+    </ul>
   )
 }

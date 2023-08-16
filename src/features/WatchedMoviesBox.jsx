@@ -6,7 +6,7 @@ import SelectedMovie from './SelectedMovie'
 export default function WatchedMovieBox({watchedMovies}) {
   return (
     <MovieBox>
-        {/* <WatchedMoviesInfo/> */}
+        <WatchedMoviesInfo/>
         <SelectedMovie selectedMovies={watchedMovies}/>
     </MovieBox>
   )

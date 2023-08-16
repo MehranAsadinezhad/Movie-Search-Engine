@@ -7,7 +7,7 @@ export default {
       colors: {
         darkPurple: '#222228',
         midPurple:"#282933",
-        lightPurple:"#282946"
+        lightPurple:"#2e3745"
       },
     },
   },
