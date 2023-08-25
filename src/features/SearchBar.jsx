@@ -1,5 +1,5 @@
 
-export default function SearchBar({ query, setQuery }) {
+export default function SearchBar({ query, setQuery, movies }) {
 
     return (
         <div className='flex items-center justify-between 
@@ -13,7 +13,7 @@ export default function SearchBar({ query, setQuery }) {
             placeholder:text-stone-200
             focus:outline-none focus:shadow-xl focus:-translate-y-0.5
             transition-all duration-300 text-white'></input>
-            <h3 className='text-stone-400 text-xl'>Found x results</h3>
+            <h3 className='text-stone-200 text-xl'>Found {movies.length} results</h3>
         </div>
     )
 }
