@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SelectedMovies({ selectedMovies }) {
+export default function SelectedMovies({ selectedMovies, onDeleteMovie }) {
 
   return (
     <ul className='divide-y divide-stone-600'>
@@ -17,7 +17,8 @@ export default function SelectedMovies({ selectedMovies }) {
             </div>
             <div>
               <button className='text-white bg-purple-500 transition-colors 
-            rounded-md hover:bg-stone-300'>✖️</button>
+            rounded-md hover:bg-stone-300'
+                onClick={() => onDeleteMovie(movie.imdbID)}>✖️</button>
             </div>
           </div>
 

@@ -52,6 +52,11 @@ function App() {
     setAdd(true);
   }
 
+  function handleDeleteMovie(id) {
+    setSelectedMovies((selectedMovies) =>
+      selectedMovies.filter((movie) => movie.imdbID !== id))
+  }
+
   return (
     <>
       <SearchBar movies={movies} query={query} setQuery={setQuery} />
@@ -61,6 +66,7 @@ function App() {
         <WatchedMoviesBox selectedId={selectedId}
           add={add} onAddMovie={handleAddMovie}
           selectedMovies={selectedMovies} setAdd={setAdd}
+          onDeleteMovie={handleDeleteMovie}
         />
       </div>
     </>

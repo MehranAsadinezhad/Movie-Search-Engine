@@ -5,7 +5,7 @@ import SelectedMovie from './SelectedMovie'
 import SelectedMovies from './SelectedMovies'
 
 export default function WatchedMovieBox({ selectedId,
-  onAddMovie, add,setAdd, selectedMovies}) {
+  onAddMovie, add,setAdd, selectedMovies, onDeleteMovie}) {
   return (
     <MovieBox>
 
@@ -13,10 +13,12 @@ export default function WatchedMovieBox({ selectedId,
         selectedId={selectedId} setAdd={setAdd} selectedMovies={selectedMovies} />
         : <>
           <WatchedMoviesInfo selectedMovies={selectedMovies} />
-          <SelectedMovies selectedMovies={selectedMovies} /></>}
+          <SelectedMovies selectedMovies={selectedMovies} 
+          onDeleteMovie={onDeleteMovie}/></>}
       {add === true && <>
         <WatchedMoviesInfo selectedMovies={selectedMovies} />
-        <SelectedMovies selectedMovies={selectedMovies} /></>}
+        <SelectedMovies selectedMovies={selectedMovies} 
+        onDeleteMovie={onDeleteMovie}/></>}
 
     </MovieBox>
   )
