@@ -12,6 +12,7 @@ function App() {
   const [selectedId, setSelectedId] = useState("");
   const [add, setAdd] = useState(false);
   const [selectedMovies, setSelectedMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState("");
 
   useEffect(function () {
     async function fetchMovies() {
@@ -40,12 +41,24 @@ function App() {
       return
     }
     fetchMovies()
-  }, [query])
+  }, [query]);
 
-  function handleSelectedMovie(id) {
+
+  useEffect(() => {
+    if (!selectedMovie) return;
+    document.title = `Movie: ${selectedMovie}`
+
+    return function(){
+      document.title = "MovieSearchEngine"
+    }
+  }, [selectedMovie]);
+
+  function handleSelectedMovie(id, title) {
     setSelectedId(id);
     setAdd(false);
+    setSelectedMovie(title);
   }
+  console.log(selectedMovie);
 
   function handleAddMovie(movie) {
     setSelectedMovies([...selectedMovies, movie]);
@@ -55,7 +68,7 @@ function App() {
   function handleDeleteMovie(id) {
     setSelectedMovies((selectedMovies) =>
       selectedMovies.filter((movie) => movie.imdbID !== id))
-  }
+  };
 
   return (
     <>
@@ -66,7 +79,7 @@ function App() {
         <WatchedMoviesBox selectedId={selectedId}
           add={add} onAddMovie={handleAddMovie}
           selectedMovies={selectedMovies} setAdd={setAdd}
-          onDeleteMovie={handleDeleteMovie}
+          onDeleteMovie={handleDeleteMovie} setSelectedMovie={setSelectedMovie}
         />
       </div>
     </>

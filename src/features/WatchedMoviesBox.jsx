@@ -5,12 +5,13 @@ import SelectedMovie from './SelectedMovie'
 import SelectedMovies from './SelectedMovies'
 
 export default function WatchedMovieBox({ selectedId,
-  onAddMovie, add,setAdd, selectedMovies, onDeleteMovie}) {
+  onAddMovie, add,setAdd, selectedMovies, onDeleteMovie,setSelectedMovie}) {
   return (
     <MovieBox>
 
       {selectedId ? <SelectedMovie add={add} onAddMovie={onAddMovie}
-        selectedId={selectedId} setAdd={setAdd} selectedMovies={selectedMovies} />
+        selectedId={selectedId} setAdd={setAdd} 
+        selectedMovies={selectedMovies} setSelectedMovie={setSelectedMovie} />
         : <>
           <WatchedMoviesInfo selectedMovies={selectedMovies} />
           <SelectedMovies selectedMovies={selectedMovies} 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 export default function SelectedMovie({ selectedId, add, selectedMovies,
-  onAddMovie, setAdd }) {
+  onAddMovie, setAdd, setSelectedMovie }) {
 
   const [movie, setMovie] = useState({})
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +41,9 @@ export default function SelectedMovie({ selectedId, add, selectedMovies,
           <div className='relative'>
             <button className='bg-midPurple px-2 py-1 
             text-white absolute rounded-r-md hover:bg-darkPurple'
-            onClick={()=>setAdd(true)}>Back</button>
+            onClick={()=>{
+              setAdd(true)
+              setSelectedMovie("")}}>Back</button>
             <img src={poster} alt={imdbRating}
               className='w-36 h-48'></img>
           </div>
