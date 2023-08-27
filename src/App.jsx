@@ -15,12 +15,15 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState("");
 
   useEffect(function () {
+    const controller = new AbortController();
+
     async function fetchMovies() {
       try {
         setIsLoading(true);
         setError("");
 
-        const res = await fetch(`http://www.omdbapi.com/?apikey=6c0b3a2d&s=${query}`);
+        const res = await fetch(`http://www.omdbapi.com/?apikey=6c0b3a2d&s=${query}`
+          , { signal: controller.signal });
         if (!res.ok) throw new Error("something went wrong with fetching");
 
         const data = await res.json();
@@ -29,7 +32,9 @@ function App() {
         setMovies(data.Search)
       }
       catch (err) {
-        setError(err.message);
+        if(err.name !== "AbortError"){
+          setError(err.message);
+        }
       }
       finally {
         setIsLoading(false)
@@ -41,6 +46,9 @@ function App() {
       return
     }
     fetchMovies()
+    return function(){
+      controller.abort();
+    }
   }, [query]);
 
 
@@ -48,7 +56,7 @@ function App() {
     if (!selectedMovie) return;
     document.title = `Movie: ${selectedMovie}`
 
-    return function(){
+    return function () {
       document.title = "MovieSearchEngine"
     }
   }, [selectedMovie]);
