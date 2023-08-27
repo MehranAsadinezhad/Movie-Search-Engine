@@ -11,8 +11,27 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedId, setSelectedId] = useState("");
   const [add, setAdd] = useState(false);
-  const [selectedMovies, setSelectedMovies] = useState([]);
+  const [selectedMovies, setSelectedMovies] = useState(function () {
+    const storedMovies = localStorage.getItem("selectedMovie");
+    return JSON.parse(storedMovies)
+  });
   const [selectedMovie, setSelectedMovie] = useState("");
+
+  function handleSelectedMovie(id, title) {
+    setSelectedId(id);
+    setAdd(false);
+    setSelectedMovie(title);
+  }
+
+  function handleAddMovie(movie) {
+    setSelectedMovies([...selectedMovies, movie]);
+    setAdd(true);
+  }
+
+  function handleDeleteMovie(id) {
+    setSelectedMovies((selectedMovies) =>
+      selectedMovies.filter((movie) => movie.imdbID !== id))
+  };
 
   useEffect(function () {
     const controller = new AbortController();
@@ -32,7 +51,7 @@ function App() {
         setMovies(data.Search)
       }
       catch (err) {
-        if(err.name !== "AbortError"){
+        if (err.name !== "AbortError") {
           setError(err.message);
         }
       }
@@ -46,7 +65,7 @@ function App() {
       return
     }
     fetchMovies()
-    return function(){
+    return function () {
       controller.abort();
     }
   }, [query]);
@@ -61,22 +80,10 @@ function App() {
     }
   }, [selectedMovie]);
 
-  function handleSelectedMovie(id, title) {
-    setSelectedId(id);
-    setAdd(false);
-    setSelectedMovie(title);
-  }
-  console.log(selectedMovie);
+  useEffect(function () {
+    localStorage.setItem("selectedMovie", JSON.stringify(selectedMovies));
+  }, [selectedMovies])
 
-  function handleAddMovie(movie) {
-    setSelectedMovies([...selectedMovies, movie]);
-    setAdd(true);
-  }
-
-  function handleDeleteMovie(id) {
-    setSelectedMovies((selectedMovies) =>
-      selectedMovies.filter((movie) => movie.imdbID !== id))
-  };
 
   return (
     <>

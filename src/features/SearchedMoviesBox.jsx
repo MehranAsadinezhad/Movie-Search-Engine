@@ -21,7 +21,7 @@ export default function SearchedMovieBox({ movies, isLoading, error
                         onClick={() => onHandleSelectedMovie(movie.imdbID, movie.Title)}>
                         <div>
                             <img src={movie.Poster} alt={movie.Title}
-                                className='w-16 h-20'></img>
+                                className='w-16 h-22'></img>
                         </div>
                         <div>
                             <h1 className='text-white

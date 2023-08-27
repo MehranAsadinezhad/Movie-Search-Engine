@@ -5,9 +5,9 @@ export default function SelectedMovies({ selectedMovies, onDeleteMovie }) {
   return (
     <ul className='divide-y divide-stone-600'>
       {selectedMovies.map((movie) => <li
-        className='flex items-center space-x-6 p-4 
+        className='flex items-center space-x-6 py-5 px-6 
         transition-all duration-200' movie={movie} key={movie.imdbID}>
-        <img src={movie.Poster} alt={movie.imdbID} className='w-16 h-20'></img>
+        <img src={movie.Poster} alt={movie.imdbID} className='w-14 h-20'></img>
         <div className='w-full'>
           <h1 className='text-white text-lg font-bold mb-3'>{movie.Title}</h1>
           <div className='flex justify-between'>
