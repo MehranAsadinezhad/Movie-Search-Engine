@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css'
 import SearchBar from './features/SearchBar'
 import SearchedMoviesBox from './features/SearchedMoviesBox';
 import WatchedMoviesBox from './features/WatchedMoviesBox';
@@ -11,11 +10,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedId, setSelectedId] = useState("");
   const [add, setAdd] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState("");
+
   const [selectedMovies, setSelectedMovies] = useState(function () {
     const storedMovies = localStorage.getItem("selectedMovie");
     return JSON.parse(storedMovies)
   });
-  const [selectedMovie, setSelectedMovie] = useState("");
 
   function handleSelectedMovie(id, title) {
     setSelectedId(id);
@@ -32,6 +32,11 @@ function App() {
     setSelectedMovies((selectedMovies) =>
       selectedMovies.filter((movie) => movie.imdbID !== id))
   };
+
+  useEffect(
+    function () {
+    localStorage.setItem("selectedMovie", JSON.stringify(selectedMovies));
+  }, [selectedMovies])
 
   useEffect(function () {
     const controller = new AbortController();
@@ -80,15 +85,14 @@ function App() {
     }
   }, [selectedMovie]);
 
-  useEffect(function () {
-    localStorage.setItem("selectedMovie", JSON.stringify(selectedMovies));
-  }, [selectedMovies])
+
 
 
   return (
     <>
       <SearchBar movies={movies} query={query} setQuery={setQuery} />
-      <div className='flex items-center justify-center space-x-8'>
+      <div className='flex flex-col justify-center items-center 
+      space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:justify-center lg:space-x-8'>
         <SearchedMoviesBox movies={movies} error={error}
           isLoading={isLoading} onHandleSelectedMovie={handleSelectedMovie} />
         <WatchedMoviesBox selectedId={selectedId}
