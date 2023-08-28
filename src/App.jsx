@@ -38,7 +38,7 @@ function App() {
         setIsLoading(true);
         setError("");
 
-        const res = await fetch(`http://www.omdbapi.com/?apikey=6c0b3a2d&s=${query}`
+        const res = await fetch(`https://www.omdbapi.com/?apikey=6c0b3a2d&s=${query}`
           , { signal: controller.signal });
         if (!res.ok) throw new Error("something went wrong with fetching");
 

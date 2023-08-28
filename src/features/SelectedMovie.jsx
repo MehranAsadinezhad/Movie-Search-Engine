@@ -9,7 +9,7 @@ export default function SelectedMovie({ selectedId, add, selectedMovies,
   useEffect(function () {
     async function getMovieDetails() {
       setIsLoading(true);
-      const res = await fetch(`http://www.omdbapi.com/?apikey=6c0b3a2d&i=${selectedId}`)
+      const res = await fetch(`https://www.omdbapi.com/?apikey=6c0b3a2d&i=${selectedId}`)
       const data = await res.json();
       setIsLoading(false)
       setMovie(data)
