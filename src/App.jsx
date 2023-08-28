@@ -11,11 +11,7 @@ function App() {
   const [selectedId, setSelectedId] = useState("");
   const [add, setAdd] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState("");
-
-  const [selectedMovies, setSelectedMovies] = useState(function () {
-    const storedMovies = localStorage.getItem("selectedMovie");
-    return JSON.parse(storedMovies)
-  });
+  const [selectedMovies, setSelectedMovies] = useState([]);
 
   function handleSelectedMovie(id, title) {
     setSelectedId(id);
@@ -33,10 +29,6 @@ function App() {
       selectedMovies.filter((movie) => movie.imdbID !== id))
   };
 
-  useEffect(
-    function () {
-    localStorage.setItem("selectedMovie", JSON.stringify(selectedMovies));
-  }, [selectedMovies])
 
   useEffect(function () {
     const controller = new AbortController();
